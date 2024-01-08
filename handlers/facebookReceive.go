@@ -11,6 +11,8 @@ import (
 func FacebookReceiveHandler(ctx *gin.Context) {
 	rmq, err := rabbitmq.NewRabbitMQ("amqp://admin:admin@localhost:5672/")
 	if err != nil {
+		logger.ErrorF("Connection failed: %v\n", err.Error())
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 	defer rmq.Close()

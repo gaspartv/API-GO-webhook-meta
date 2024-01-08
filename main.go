@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gaspartv/API-GO-webhook-meta/configs"
 	"github.com/gaspartv/API-GO-webhook-meta/routers"
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -12,15 +14,12 @@ var (
 )
 
 func main() {
-	// Environment variables
-	envVariables := make(map[string]string)
-	envVariables["FACEBOOK_VERIFY_TOKEN"] = "e87e4588-794a-4d5b-91c6-28699a275c7c"
-	for key, value := range envVariables {
-		os.Setenv(key, value)
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("Erro ao carregar o arquivo .env")
+		os.Exit(1)
 	}
-
+	
 	logger = *configs.GetLogger("main")
 
-	// Initialize Router
 	routers.Initialize()
 }
