@@ -12,7 +12,7 @@ func initializeRoutesInstagram(router *gin.Engine) {
 	basePath := "/api/v1/messenger/instagram/webhook"
 
 	docs.SwaggerInfo.BasePath = basePath
-	
+
 	v1 := router.Group(basePath)
 	{
 		v1.GET("/", handlers.InstagramValidateHandler)

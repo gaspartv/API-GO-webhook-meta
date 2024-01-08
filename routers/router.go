@@ -10,7 +10,7 @@ import (
 
 func Initialize() {
 	router := gin.Default()
-	
+
 	initializeRoutesFacebook(router)
 	initializeRoutesInstagram(router)
 	initializeRoutesWhatsapp(router)

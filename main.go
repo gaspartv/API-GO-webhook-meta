@@ -18,7 +18,7 @@ func main() {
 		fmt.Println("Erro ao carregar o arquivo .env")
 		os.Exit(1)
 	}
-	
+
 	logger = *configs.GetLogger("main")
 
 	routers.Initialize()

@@ -10,12 +10,12 @@ func initializeRoutesWhatsapp(router *gin.Engine) {
 	handlers.InitializeHandler()
 
 	basePath := "/api/v1/whatsapp/webhook"
-	
+
 	docs.SwaggerInfo.BasePath = basePath
-	
+
 	v1 := router.Group(basePath)
 	{
-		v1.GET("/")
-		v1.POST("/")
+		v1.GET("/", handlers.WhatsappValidateHandler)
+		v1.POST("/", handlers.WhatsappReceiveHandler)
 	}
 }
