@@ -15,7 +15,7 @@ func initializeRoutesInstagram(router *gin.Engine) {
 	
 	v1 := router.Group(basePath)
 	{
-		v1.GET("/")
-		v1.POST("/")
+		v1.GET("/", handlers.InstagramValidateHandler)
+		v1.POST("/", handlers.InstagramReceiveHandler)
 	}
 }

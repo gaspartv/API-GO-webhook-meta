@@ -103,12 +103,12 @@ type entry struct {
 	Messaging []messaging `json:"messaging"`
 }
 
-type FacebookReceiveRequest struct {
+type MessageReceiveRequest struct {
 	Object eventObject `json:"object"`
 	Entry  []entry     `json:"entry"`
 }
 
-func (r *FacebookReceiveRequest) Validate() error {
+func (r *MessageReceiveRequest) Validate() error {
 	if r.Object == (eventObject{}) {
 		return fmt.Errorf("object field is empty or not initialized")
 	}
