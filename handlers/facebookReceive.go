@@ -3,13 +3,14 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 
 	"github.com/gaspartv/API-GO-webhook-meta/rabbitmq"
 	"github.com/gin-gonic/gin"
 )
 
 func FacebookReceiveHandler(ctx *gin.Context) {
-	rmq, err := rabbitmq.NewRabbitMQ("amqp://admin:admin@localhost:5672/")
+	rmq, err := rabbitmq.NewRabbitMQ(os.Getenv("RABBIT_MQ_URL"))
 	if err != nil {
 		logger.ErrorF("Connection failed: %v\n", err.Error())
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -35,7 +36,7 @@ func FacebookReceiveHandler(ctx *gin.Context) {
 		return
 	}
 
-	err = rmq.Publish("facebook_webhook_send", body)
+	err = rmq.Publish(os.Getenv("RABBIT_MQ_SEND"), body)
 	if err != nil {
 		logger.ErrorF("Failed to publish message to RabbitMQ: %v\n", err)
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})

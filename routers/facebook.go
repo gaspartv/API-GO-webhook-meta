@@ -7,14 +7,15 @@ import (
 )
 
 func initializeRoutesFacebook(router *gin.Engine) {
-	// Initialize Handler
 	handlers.InitializeHandler()
+
 	basePath := "/api/v1/messenger/facebook/webhook"
+
 	docs.SwaggerInfo.BasePath = basePath
+
 	v1 := router.Group(basePath)
 	{
 		v1.GET("/", handlers.FacebookValidateHandler)
 		v1.POST("/", handlers.FacebookReceiveHandler)
 	}
-
 }
