@@ -36,7 +36,7 @@ func FacebookReceiveHandler(ctx *gin.Context) {
 		return
 	}
 
-	err = rmq.Publish(os.Getenv("RABBIT_MQ_SEND_TO_FACEBOOK"), body)
+	err = rmq.Publish(os.Getenv("RABBIT_MQ_SEND"), body)
 	if err != nil {
 		logger.ErrorF("Failed to publish message to RabbitMQ: %v\n", err)
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})

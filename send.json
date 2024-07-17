@@ -1,0 +1,36 @@
+{
+  "phoneNumberId": "269710592902327",
+  "appToken": "EAAIU7bqLvE4BO4dyvdiTCfajmAtgUHliSqgZAPZCEilF4wr4HVpvBLOvQX9onkmZAr2eZCZBJ7zPvXwoEeneyZB26NEivgeOO5ZAbXimcZBuVwAoIXXWu2jevJuSHNdombxeCmKO5sWrXlZAaRicUoPIPtNyJMOh2weuqMTFyA695zRcNe0YT1kmQyaRQxMi1ghXooKoAZByZCvW7ATdoKP8jvKno53SHH6cveesnAZD",
+  "data": {
+    "messaging_product": "whatsapp",
+    "recipient_type": "individual",
+    "to": "5532998274714",
+    "type": "interactive",
+    "interactive": {
+      "type": "address_message",
+      "body": {
+        "text": "Thanks for your order! Tell us what address you’d like this order delivered to."
+      },
+      "action": {
+        "name": "address_message",
+        "parameters": {
+          "country": "BR"
+        }
+      }
+    }
+  }
+}
+
+{
+"phoneNumberId": "269710592902327",
+"appToken": "EAAIU7bqLvE4BO4dyvdiTCfajmAtgUHliSqgZAPZCEilF4wr4HVpvBLOvQX9onkmZAr2eZCZBJ7zPvXwoEeneyZB26NEivgeOO5ZAbXimcZBuVwAoIXXWu2jevJuSHNdombxeCmKO5sWrXlZAaRicUoPIPtNyJMOh2weuqMTFyA695zRcNe0YT1kmQyaRQxMi1ghXooKoAZByZCvW7ATdoKP8jvKno53SHH6cveesnAZD",
+"data": {
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "5532998274714",
+  "type": "text",
+  "text": {
+    "body": "Olá"
+  }
+}
+}

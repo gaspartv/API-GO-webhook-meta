@@ -18,30 +18,29 @@ func WhatsappReceiveHandler(ctx *gin.Context) {
 	}
 	defer rmq.Close()
 
-	var request WhatsappReceiveRequest
-	if err := ctx.BindJSON(&request); err != nil {
+	var requestBody interface{}
+	if err := ctx.BindJSON(&requestBody); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	if err := request.Validate(); err != nil {
-		logger.ErrorF("Validation error: %v\n", err.Error())
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
+	data := map[string]interface{}{
+		"pattern": "whatsapp",
+		"data":    requestBody,
 	}
 
-	body, err := json.Marshal(&request)
+	body, err := json.Marshal(data)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
 		return
 	}
 
-	err = rmq.Publish(os.Getenv("RABBIT_MQ_SEND_TO_WHATSAPP"), body)
+	err = rmq.Publish(os.Getenv("RABBIT_MQ_SEND"), body)
 	if err != nil {
 		logger.ErrorF("Failed to publish message to RabbitMQ: %v\n", err)
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
 		return
 	}
 
-	sendSuccess(ctx, "Successful")
+	ctx.JSON(http.StatusOK, gin.H{"message": "Message published successfully"})
 }

@@ -16,7 +16,7 @@ func WhatsappValidateHandler(ctx *gin.Context) {
 	}
 
 	verifyToken := ctx.Query("hub.verify_token")
-	if verifyToken != os.Getenv("WHATSAPP_VERIFY_TOKEN") {
+	if verifyToken != os.Getenv("META_VERIFY_TOKEN") {
 		logger.Error("Check if the token is valid")
 		sendError(ctx, http.StatusBadRequest, "Check if the token is valid")
 		return

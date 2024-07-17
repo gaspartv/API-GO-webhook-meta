@@ -26,7 +26,6 @@ require (
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
@@ -54,4 +53,5 @@ require (
 require (
 	github.com/gaspartv/API-GO-opportunities v0.0.0-20240107173601-c4394b1fd58a
 	github.com/gin-gonic/gin v1.9.1
+	github.com/joho/godotenv v1.5.1
 )
